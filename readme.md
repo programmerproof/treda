@@ -77,7 +77,7 @@ v1.0
 # Documentación
 
 #### Instalacion y ejecución
-NOTA: Ejemplo url consumo del servicio: http://www.myurl.com/public/store/info?id=1
+NOTA: Ejemplo url consumo del servicio que muestra los productos asociados a una tienda: http://www.myurl.com/public/store/info?id=1
 
 1. Descargar archivos del proyecto o clonar proyecto y hacer su respectiva actualización.
 
