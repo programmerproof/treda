@@ -17,4 +17,12 @@ class Product extends Model
     public $timestamps = false;
 
     protected $guarded = ['_token'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function store(){
+        return $this->belongsTo(Store::class);
+    }
 }
