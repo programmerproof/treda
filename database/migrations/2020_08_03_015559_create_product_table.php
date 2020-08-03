@@ -15,7 +15,17 @@ class CreateProductTable extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('sku')->unique();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('store_id');
+            $table->string('name');
+            $table->string('description');
+            $table->integer('value');
+            $table->string('image');
+            $table->softDeletes();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade');
         });
     }
 
@@ -29,3 +39,4 @@ class CreateProductTable extends Migration
         Schema::dropIfExists('product');
     }
 }
+

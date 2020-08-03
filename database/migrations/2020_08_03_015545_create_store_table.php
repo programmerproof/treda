@@ -15,7 +15,12 @@ class CreateStoreTable extends Migration
     {
         Schema::create('store', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->string('name');
+            $table->date('opening_date');
+            $table->softDeletes();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
