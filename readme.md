@@ -77,6 +77,8 @@ v1.0
 # Documentación
 
 #### Instalacion y ejecución
+NOTA: Ejemplo url consumo del servicio: http://www.myurl.com/public/store/info?id=1
+
 1. Descargar archivos del proyecto o clonar proyecto y hacer su respectiva actualización.
 
 2. Colocar en ubicación del equipo donde este instalado el servidor web. 
