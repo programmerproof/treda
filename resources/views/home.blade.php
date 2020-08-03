@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div style="text-align:center;"><h2>Esta es una petición asíncrona en la aplicación.</h2></div>
                 </div>
             </div>
         </div>
