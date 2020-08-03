@@ -62,6 +62,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-6">
+                                {!! htmlFormSnippet() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block" style="display: block; color:red;">
+                                        <strong>Hey!!! :Debes seleccionar el captcha!</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register

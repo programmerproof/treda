@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {!! htmlScriptTagJsApi() !!}
 </head>
 <body>
     <div id="app">
@@ -29,14 +30,31 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <strong>PRUEBA TÉCNICA: JULIÁN BAQUERO</strong>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @guest
+                        @else
+                            <li>
+                                <a href="{{ URL::to('store') }}">
+                                    Tienda
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ URL::to('product') }}">
+                                    Producto 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ URL::to('log') }}">
+                                    Log del servicio 
+                                </a>
+                            </li>
+                        @endguest    
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -73,8 +91,8 @@
 
         @yield('content')
     </div>
-
     <!-- Scripts -->
+    <script src="{{ asset('js/resource.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

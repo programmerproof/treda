@@ -117,5 +117,6 @@ return [
     */
 
     'attributes' => [],
+    'recaptcha' => 'Hey!!! :Debes seleccionar el captcha!',
 
 ];
