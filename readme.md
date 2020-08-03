@@ -78,6 +78,7 @@ v1.0
 
 #### Instalacion y ejecución
 NOTA: Ejemplo url consumo del servicio que muestra los productos asociados a una tienda: http://www.myurl.com/public/store/info?id=1
+      Esquema de Base de datos para evitar correr migrate y seeders de laravel: treda.sql
 
 1. Descargar archivos del proyecto o clonar proyecto y hacer su respectiva actualización.
 
