@@ -25,4 +25,36 @@ class Product extends Model
     public function store(){
         return $this->belongsTo(Store::class);
     }
+
+    public function scopeSkuLike($query, $search){
+        return $query->where('sku', 'LIKE', '%'.$search.'%');
+    }
+
+    public function scopeOrderByNameAsc($query)
+    {
+        return $query->orderBy('name', 'ASC');
+    }
+
+    public static function validate($attr)
+    {
+       //
+       $max = Product::max($attr->name);
+       $validator = \Validator::make([$attr->name => $attr->value], [
+            $attr->name => 'numeric|max:'.$max
+         ]);
+        
+       if ($validator->fails()) {
+           $err = $attr->err;
+           $result = Product::where($attr->name, $attr->value);
+            if($result->count() > 0 ){
+                $success = $attr->success;
+                return ($success());
+            }else{
+                    return $err();
+            }
+         } else{
+               $success = $attr->success;
+               return ($success());
+           }
+    }
 }

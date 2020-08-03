@@ -27,4 +27,35 @@ class Store extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function scopeNameLike($query, $search){
+        return $query->where('name', 'LIKE', '%'.$search.'%');
+    }
+
+    public function scopeOrderByNameAsc($query)
+    {
+        return $query->orderBy('name', 'ASC');
+    }
+
+    public function scopeWhereId($query, $id)
+    {
+        return  $query->where('id', $id)->OrderByNameAsc()->get();
+    }
+
+    public static function validate($attr)
+    {
+       //
+       $max = Store::max($attr->name);
+       $validator = \Validator::make([$attr->name => $attr->value], [
+            $attr->name => 'numeric|max:'.$max
+         ]);
+        
+       if ($validator->fails()) {
+           $err = $attr->err;
+           return $err();
+         } else{
+               $success = $attr->success;
+               return ($success());
+           }
+    }
 }
