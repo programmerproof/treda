@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -100,7 +101,16 @@ class Product extends Model
                 foreach($attr->data AS $key=>$value){
                     $path = $attr->data[$key]->image;
                     $type = pathinfo($path, PATHINFO_EXTENSION);
-                    $data = file_get_contents($path);
+                    //$data = file_get_contents($path);
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $path); 
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+                    $output = curl_exec($ch);   
+                    $data = ($output);
+                    if(curl_getinfo($ch, CURLINFO_HTTP_CODE) !== 200) {
+                        //var_dump($data); 
+                    }
+                    curl_close($ch);
                     $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                     $attr->data[$key]->image = $base64;
                 }

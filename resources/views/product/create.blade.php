@@ -56,8 +56,9 @@
 
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6">
+								  * Descripción:
 									<div class="form-group">
-										* Descripción:
+										
 										<textarea name="description" id="description" rows="10" cols="50" value="">{{old('description')??''}}</textarea>
 									</div>
 								</div>
