@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::match(['get'], 'store/info/{id?}', 'StoreController@info');
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth']);
+Route::resource('store', 'StoreController')->middleware(['auth']);
+Route::resource('product', 'ProductController')->middleware(['auth']);
+Route::resource('log', 'LogController')->middleware(['auth']);
+Route::resource('log/message', 'LogController')->middleware(['auth']);
