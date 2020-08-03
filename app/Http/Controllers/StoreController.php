@@ -243,7 +243,7 @@ class StoreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function info(Request $request)
-    {phpinfo();
+    {
         //
         $store_id = $request->get('id');
         $response = Product::info(
